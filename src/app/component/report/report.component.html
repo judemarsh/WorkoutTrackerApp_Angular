@@ -1,5 +1,45 @@
-<div class="row">
-  <div class="col-lg-12" id="BarChart">
-      <p-chart type="bar" [data]="data"></p-chart>
-  </div>
+<div class="well">
+  Workout Time of Day : {{reportObj.workoutTimeOfDay}}
+</div>
+<div class="well">
+  Workout Time of Week : {{reportObj.workoutTimeOfWeek}}
+</div>
+<div class="well">
+  Workout Time of Month : {{reportObj.workoutTimeOfMonth}}
+</div>
+<div class="chart-center">
+  <fusioncharts
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="caloriesWeekChartData">
+  </fusioncharts>
+</div>
+<div class="well">
+  Week Total Calories Burnt : {{reportObj.totalCaloriesInWeek}}
+</div>
+<div class="chart-center">
+  <fusioncharts
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="caloriesMonthChartData">
+  </fusioncharts>
+</div>
+<div class="well">
+  Month Total Calories Burnt : {{reportObj.totalCaloriesInMonth}}
+</div>
+<div class="chart-center">
+  <fusioncharts
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="caloriesYearChartData">
+  </fusioncharts>
+</div>
+<div class="well">
+  Year Total Calories Burnt : {{reportObj.totalCaloriesInYear}}
 </div>

@@ -31,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'endWorkout/:workoutId', component: LogWorkoutComponent, data: {contentHeader: "End Workout", hasStarted: true}},
   {path: 'manageCategory', component: ManageCategoryComponent},
   {path: 'report', component: ReportComponent},
+  {path: '', redirectTo:'/viewWorkout', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 @NgModule({

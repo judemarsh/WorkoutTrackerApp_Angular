@@ -61,15 +61,24 @@ export class ManageWorkoutComponent implements OnInit {
   }
 
   addCategory(){
-    console.log('here');
     this.router.navigate(['manageCategory']);
   }
 
   saveWorkout(){
-    this.workoutService.saveWorkout(this.workoutObj).subscribe(responseData => { 
-      this.workoutObj.workoutId = responseData;
-      this.router.navigate(['/viewWorkout']);
-    });
+    if(this.workoutObj.workoutTitle == null || this.workoutObj.workoutTitle.trim() == ""){
+      alert("Please enter workout title.");
+    } else if(this.workoutObj.workoutNote == null || this.workoutObj.workoutNote.trim() == ""){
+      alert("Please enter workout notes.");
+    } else if(this.workoutObj.caloriesBurnPerMin == null || String(this.workoutObj.caloriesBurnPerMin).trim() == ""){ 
+      alert("Please enter calories burn per minute for this workout.");
+    } else if(this.workoutObj.categoryId == null || String(this.workoutObj.categoryId).trim() == ""){ 
+      alert("Please select category.");
+    } else {
+      this.workoutService.saveWorkout(this.workoutObj).subscribe(responseData => { 
+        this.workoutObj.workoutId = responseData;
+        this.router.navigate(['/viewWorkout']);
+      });
+    }
   }
 
   updateWorkout(){

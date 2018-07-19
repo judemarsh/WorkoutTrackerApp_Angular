@@ -45,11 +45,15 @@ export class ManageCategoryComponent implements OnInit {
   }
 
   addCategory(){
-    this.categoryService.saveCategory(this.categoryObj).subscribe(responseData => { 
-      this.categoryObj.categoryId= responseData;
-      this.categoryList.push(this.categoryObj);
-      this.categoryObj = new Category(null,null);
-    });
+    if(this.categoryObj.categoryName == null || this.categoryObj.categoryName.trim() == ""){
+      alert("Please enter category name.");
+    } else {
+      this.categoryService.saveCategory(this.categoryObj).subscribe(responseData => { 
+        this.categoryObj.categoryId= responseData;
+        this.categoryList.push(this.categoryObj);
+        this.categoryObj = new Category(null,null);
+      });
+    }
   }
 
   deleteCategory(delCatObj: Category): void{
